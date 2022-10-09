@@ -6,17 +6,16 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
+import net.minecraft.server.command.CommandOutput;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Nameable;
 import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityLike;
 
-public class ModEntity extends Entity {
+public abstract class ModEntity extends Entity implements Nameable, EntityLike, CommandOutput {
+
     public ModEntity(EntityType<?> type, World world) {
         super(type, world);
-    }
-
-    @Override
-    protected void initDataTracker() {
-
     }
 
     public boolean bathingInVoid(){
@@ -28,20 +27,5 @@ public class ModEntity extends Entity {
         if (this.bathingInVoid()) {
             this.kill();
         }
-    }
-
-    @Override
-    protected void readCustomDataFromNbt(NbtCompound nbt) {
-
-    }
-
-    @Override
-    protected void writeCustomDataToNbt(NbtCompound nbt) {
-
-    }
-
-    @Override
-    public Packet<?> createSpawnPacket() {
-        return null;
     }
 }
