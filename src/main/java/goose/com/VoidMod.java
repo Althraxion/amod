@@ -1,5 +1,6 @@
 package goose.com;
 
+import goose.com.damage.ModDamage;
 import goose.com.fluid.ModFluids;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
