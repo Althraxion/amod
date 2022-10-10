@@ -17,7 +17,7 @@ public class VoidModClient implements ClientModInitializer {
         FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.STILL_VOID, ModFluids.FLOWING_VOID,
                 new SimpleFluidRenderHandler(
                         new Identifier("voidmod:block/void_still.png"),
-                        new Identifier("voidmod:block/void_flow.png"),
+                        new Identifier("voidmod:block/void_flowing.png"),
                         00000000
                 ));
 
