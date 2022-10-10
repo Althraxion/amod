@@ -1,25 +1,21 @@
 package goose.com.item.custom;
 
-import goose.com.fluid.ModFluids;
-import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
-import net.minecraft.block.AirBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.StackReference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsage;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.block.AirBlock;
 
 public class VoidBottleItem extends Item {
     public VoidBottleItem(Settings settings) {
@@ -38,12 +34,11 @@ public class VoidBottleItem extends Item {
     public ActionResult useOnBlock(ItemUsageContext context) {
         if (!context.getWorld().isClient()) {
             BlockPos positionClicked = context.getBlockPos();
-            Direction direction = context.getSide();
 
 
             context.getWorld().breakBlock(new BlockPos
-                    (positionClicked.getX(), positionClicked.getY(), positionClicked.getZ()),
-                            false);
+                            (positionClicked.getX(), positionClicked.getY(), positionClicked.getZ()),
+                                true);
         }
 
         return super.useOnBlock(context);
