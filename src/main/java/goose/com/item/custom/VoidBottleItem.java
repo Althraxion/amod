@@ -46,6 +46,8 @@ public class VoidBottleItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        ItemStack stack = user.getStackInHand(hand);
+
         return super.use(world, user, hand);
     }
 }
