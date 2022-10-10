@@ -1,3 +1,4 @@
 {
-  "item.voidmod.void_bucket": "Bucket of Pure Void"
+  "item.voidmod.void_bucket": "Bucket of Pure Void",
+  "death.attack.inVoid": "%s was consumed by the void"
 }
