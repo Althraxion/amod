@@ -3,10 +3,7 @@ package goose.com.item.custom;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsage;
-import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ClickType;
@@ -47,7 +44,7 @@ public class VoidBottleItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
-        stack.decrement(1);
+        ItemUsage.exchangeStack(stack, user, new ItemStack(Items.GLASS_BOTTLE));
 
         return super.use(world, user, hand);
     }
