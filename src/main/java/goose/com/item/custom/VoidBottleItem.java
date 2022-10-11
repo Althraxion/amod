@@ -37,6 +37,7 @@ public class VoidBottleItem extends Item {
                                 false);
             var user = context.getPlayer();
             var hand = context.getHand();
+            assert user != null;
             ItemStack stack = user.getStackInHand(hand);
             ItemUsage.exchangeStack(stack, user, new ItemStack(Items.GLASS_BOTTLE));
         }
