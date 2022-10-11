@@ -23,29 +23,24 @@ public class VoidBottleItem extends Item {
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
         if (!entity.isInvulnerable()) {
             entity.kill();
+            ItemUsage.exchangeStack(stack, user, new ItemStack(Items.GLASS_BOTTLE));
         }
-        return super.useOnEntity(stack, user, entity, hand);
+        return ActionResult.SUCCESS;
     }
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         if (!context.getWorld().isClient()) {
             BlockPos positionClicked = context.getBlockPos();
-
-
             context.getWorld().breakBlock(new BlockPos
                             (positionClicked.getX(), positionClicked.getY(), positionClicked.getZ()),
-                                true);
+                                false);
+            var user = context.getPlayer();
+            var hand = context.getHand();
+            ItemStack stack = user.getStackInHand(hand);
+            ItemUsage.exchangeStack(stack, user, new ItemStack(Items.GLASS_BOTTLE));
         }
 
-        return super.useOnBlock(context);
-    }
-
-    @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack stack = user.getStackInHand(hand);
-        ItemUsage.exchangeStack(stack, user, new ItemStack(Items.GLASS_BOTTLE));
-
-        return super.use(world, user, hand);
+        return ActionResult.SUCCESS;
     }
 }
